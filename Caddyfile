@@ -2,7 +2,7 @@
 {
 	admin off # theres no need for the admin api in railway's environment
 	persist_config off # storage isn't persistent anyway
-	auto_https off # railway handles https for us, this could in some cases cause issues if left enabled
+	auto_https disable_certs # railway handles https for us, this could in some cases cause issues if left enabled
 	# runtime logs
 	log {
 		format json # set runtime log format to json mode 
@@ -53,7 +53,6 @@
 
 		# sets the Host header to the header to the dynamic name and port options
 		header_up Host {upstream_hostport}
-		header_up X-Forwarded-Proto https
 	}
 
 	# the handle_path directive WILL strip /api/ from the path before proxying
